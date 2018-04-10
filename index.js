@@ -25,7 +25,9 @@ let data = {
   pauseMusic: true,
   pauseSoundFX: false,
   pauseIntroMusic: true,
-  questionReady: false
+  questionReady: false,
+  musicVol: 0.1,
+  timerVol: 0.1
 }
 
 data.totalQuestions = questions.length
@@ -157,12 +159,18 @@ io.on('connection', (socket) => {
   })
 
   socket.on('pauseSoundFX', (soundFX) => {
-      data.pauseSoundFX = soundFX
-    io.sockets.emit('soundFXToggle', soundFX)
+        data.pauseSoundFX = soundFX
+        io.sockets.emit('soundFXToggle', soundFX)
   })
 
   socket.on('volMusic', (vol) => {
-    io.sockets.emit('musicVolume', vol)
+        data.musicVol = vol
+        io.sockets.emit('musicVolume', data.musicVol)
+  })
+
+  socket.on('volTimer', (vol) => {
+        data.timerVol = vol
+        io.sockets.emit('timerVolume', data.timerVol)
   })
 
   socket.on('updateCurrentQuestion', (num) => {

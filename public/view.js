@@ -17,7 +17,7 @@ let pauseTime = false
 let pauseMusic = true
 let showBuzzTeam = false
 let questionReady = false
-let soundFXOn = true
+let pauseSoundFX = false
 
 let s_correct = new Audio(`fx/correct.mp3`)
 let s_wrong = new Audio(`fx/wrong.mp3`)
@@ -27,6 +27,27 @@ let s_buzz = new Audio(`fx/buzz.wav`)
 let s_10sec = new Audio(`timer/10sec.mp3`)
 let s_30sec = new Audio(`timer/30sec.mp3`)
 let s_60sec = new Audio(`timer/60sec.mp3`)
+
+
+let introTrack = new Audio(`tracks/intro.mp3`)
+introTrack.volume = 0.1
+introTrack.addEventListener('ended',()=>{
+    socket.emit('introTrackEnded')
+})
+let tracks = [];
+for (let i = 3; i <= 4; i++)
+tracks.push(new Audio(`tracks/track${i}.mp3`))
+
+tracks.sort(function() {return 0.5 - Math.random()})
+
+let currentTrack = 0
+let allTracks = x = tracks.length
+
+while (x--) {
+    tracks[x].addEventListener('ended',playNextTrack)
+    tracks[x].volume = 0.1
+}
+
 
 let QuestionSeconds = 0
 
@@ -40,14 +61,19 @@ let words = ''
 socket.on('connected', (data) => {
     pauseTime = data.pauseTime
     pauseMusic = data.pauseMusic
-    soundFXOn = !data.pauseSoundFX
+    pauseSoundFX = data.pauseSoundFX
 
+    setMusicVolume(data.musicVol)
+    setTimerVolume(data.timerVol)
     playMusic()
 
     if (data.questionReady ) {
         socket.emit('clear')
         prepareQuestion(data)
     }
+
+
+
 })
 
 
@@ -57,7 +83,7 @@ socket.on('buzzes', (buzzes) => {
       showBuzzTeam = false
       info.innerHTML = `Team ${buzzes[0]}`
       info.classList.add('info-display')
-      if (soundFXOn) s_buzz.play()
+      if (!pauseSoundFX) s_buzz.play()
     }
 
 })
@@ -143,7 +169,7 @@ socket.on('answerlock', (answerChosen) => {
     pauseTime = true
     chosenAnswer = answerChosen
     questionClose()
-    if(soundFXOn) s_lock.play()
+    if(!pauseSoundFX) s_lock.play()
 
 })
 
@@ -180,15 +206,15 @@ socket.on('introMusicToggle', (musicStop) => {
 })
 
 socket.on('musicVolume', (musicVol) => {
-    introTrack.volume = musicVol
-    tracks.forEach((track) => {
-        track.volume = musicVol
-    })
-    volumeTimerMusic(musicVol)
+    setMusicVolume(musicVol)
+})
+
+socket.on('timerVolume', (musicVol) => {
+    setTimerVolume(musicVol)
 })
 
 socket.on('soundFXToggle', (soundFX) => {
-    soundFXOn = soundFX
+    pauseSoundFX = soundFX
 })
 
 
@@ -273,7 +299,7 @@ function startTimer() {
         socket.emit('questionReady')
         questionReady = true
         clockTimer = setInterval(countdown, 1000)
-        if(soundFXOn) playTimerMusic()
+        if(!pauseSoundFX) playTimerMusic()
     }, delay)
 }
 
@@ -314,11 +340,11 @@ function showCorrectAnswer() {
     if ( correctAnswer.length &&  chosenAnswer !== null && chosenAnswer === correctAnswer) {
         info.innerHTML = `Correct`
         info.classList.add('correct')
-        if(soundFXOn) s_correct.play()
+        if(!pauseSoundFX) s_correct.play()
     } else {
         info.innerHTML = `Incorrect`
         info.classList.add('wrong')
-        if(soundFXOn) s_wrong.play()
+        if(!pauseSoundFX) s_wrong.play()
     }
 
 }
@@ -350,32 +376,15 @@ function playTimerMusic() {
     s_60sec.currentTime = 0
  }
 
-  function volumeTimerMusic(vol) {
+  function setTimerVolume(vol) {
     s_10sec.volume = vol
     s_30sec.volume = vol
     s_60sec.volume = vol
  }
 
-volumeTimerMusic(0.1)
+setTimerVolume(0.1)
 
-let introTrack = new Audio(`tracks/intro.mp3`)
-introTrack.volume = 0.1
-introTrack.addEventListener('ended',()=>{
-    socket.emit('introTrackEnded')
-})
-let tracks = [];
-for (let i = 3; i <= 4; i++)
-tracks.push(new Audio(`tracks/track${i}.mp3`))
 
-tracks.sort(function() {return 0.5 - Math.random()})
-
-let currentTrack = 0
-let allTracks = x = tracks.length
-
-while (x--) {
-    tracks[x].addEventListener('ended',playNextTrack)
-    tracks[x].volume = 0.1
-}
 
 
 function stopTrack() {
@@ -389,6 +398,13 @@ function playTrack() {
 function playNextTrack() {
      currentTrack = (currentTrack + 1) % allTracks
      playTrack()
+}
+
+function setMusicVolume(musicVol) {
+    introTrack.volume = musicVol
+    tracks.forEach((track) => {
+        track.volume = musicVol
+    })
 }
 
 

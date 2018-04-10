@@ -16,11 +16,13 @@ const choices = document.querySelector('.js-choices')
 const lock = document.querySelector('.js-lock')
 const viewquestion = document.querySelector('.view-question')
 const musicVol = document.querySelector('input[name="musicVol"]')
+const timerVol = document.querySelector('input[name="timerVol"]')
 const currQuestion = document.querySelector('input[name="curQ"]')
 
 
 lock.addEventListener('click', lockChoice)
 musicVol.addEventListener('change', updateMusicVol)
+timerVol.addEventListener('change', updateTimerVol)
 currQuestion.addEventListener('change', updateCurrQuestion)
 
 let pauseTime = false
@@ -34,6 +36,9 @@ socket.on('connected', (data) => {
   pauseMusic = data.pauseMusic
   pauseSoundFX = data.pauseSoundFX
   pauseIntroMusic = data.pauseIntroMusic
+
+  musicVol.value = data.musicVol *100
+  timerVol.value = data.timerVol *100
 
   if (data.questionReady ) {
        displayChoices(data)
@@ -120,6 +125,10 @@ function toogleSoundFX() {
 
 function updateMusicVol() {
     socket.emit('volMusic', musicVol.value*0.01)
+}
+
+function updateTimerVol() {
+    socket.emit('volTimer', timerVol.value*0.01)
 }
 
 function updateCurrQuestion() {

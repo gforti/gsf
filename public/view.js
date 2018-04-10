@@ -38,7 +38,7 @@ let tracks = [];
 for (let i = 3; i <= 4; i++)
 tracks.push(new Audio(`tracks/track${i}.mp3`))
 
-tracks.sort(function() {return 0.5 - Math.random()})
+// tracks.sort(function() {return 0.5 - Math.random()})
 
 let currentTrack = 0
 let allTracks = x = tracks.length
@@ -266,35 +266,36 @@ function startTimer() {
     question.classList.remove('hide')
 
     let delay = Math.ceil(words.length/2) * 1000
+    const DELAY_BY = 1500
     const ul = answers.querySelector('ul')
 
     if (!ul.classList.contains('hidden')) {
-        delay += 2000
+        delay += DELAY_BY
         answer1Timer = setTimeout(()=>{
             const li = answers.querySelector('li:nth-child(1)')
             if (li) li.classList.remove('hidden')
         }, delay)
 
-        delay += 1500
+        delay += DELAY_BY
         answer2Timer = setTimeout(()=>{
             const li = answers.querySelector('li:nth-child(2)')
             if (li) li.classList.remove('hidden')
         }, delay)
 
-        delay += 1500
+        delay += DELAY_BY
         answer3Timer = setTimeout(()=>{
             const li = answers.querySelector('li:nth-child(3)')
             if (li) li.classList.remove('hidden')
         }, delay)
 
-        delay += 1500
+        delay += DELAY_BY
         answer4Timer = setTimeout(()=>{
             const li = answers.querySelector('li:nth-child(4)')
             if (li) li.classList.remove('hidden')
         }, delay)
     }
 
-    delay += 1500
+    delay += DELAY_BY
     questionReadyTimer = setTimeout(()=>{
         socket.emit('questionReady')
         questionReady = true
@@ -309,7 +310,7 @@ function countdown() {
         return
     }
     if (!pauseTime) {
-        playTimerMusic()
+        if(!pauseSoundFX) playTimerMusic()
         timeLeft--
         timer.innerHTML = timeLeft
     } else {

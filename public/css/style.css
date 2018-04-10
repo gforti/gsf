@@ -325,6 +325,11 @@ ul.view-answers li:nth-child(4) {
     background-color: #fbc33b;
 }
 
+ul.view-answers li.highlight {
+    background-color: red;
+    border-color: red;
+}
+
 li.highlight span {
      color: #333;
 }

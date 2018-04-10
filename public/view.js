@@ -272,24 +272,28 @@ function startTimer() {
     if (!ul.classList.contains('hidden')) {
         delay += DELAY_BY
         answer1Timer = setTimeout(()=>{
+            socket.emit('answerShown', 1)
             const li = answers.querySelector('li:nth-child(1)')
             if (li) li.classList.remove('hidden')
         }, delay)
 
         delay += DELAY_BY
         answer2Timer = setTimeout(()=>{
+            socket.emit('answerShown', 2)
             const li = answers.querySelector('li:nth-child(2)')
             if (li) li.classList.remove('hidden')
         }, delay)
 
         delay += DELAY_BY
         answer3Timer = setTimeout(()=>{
+            socket.emit('answerShown', 3)
             const li = answers.querySelector('li:nth-child(3)')
             if (li) li.classList.remove('hidden')
         }, delay)
 
         delay += DELAY_BY
         answer4Timer = setTimeout(()=>{
+            socket.emit('answerShown', 4)
             const li = answers.querySelector('li:nth-child(4)')
             if (li) li.classList.remove('hidden')
         }, delay)
@@ -300,7 +304,7 @@ function startTimer() {
         socket.emit('questionReady')
         questionReady = true
         clockTimer = setInterval(countdown, 1000)
-        if(!pauseSoundFX) playTimerMusic()
+        playTimerMusic()
     }, delay)
 }
 
@@ -310,7 +314,7 @@ function countdown() {
         return
     }
     if (!pauseTime) {
-        if(!pauseSoundFX) playTimerMusic()
+        playTimerMusic()
         timeLeft--
         timer.innerHTML = timeLeft
     } else {
@@ -352,6 +356,10 @@ function showCorrectAnswer() {
 
 
 function playTimerMusic() {
+    if(pauseSoundFX) {
+        pauseTimerMusic()
+        return
+    }
     stopTrack()
     if (QuestionSeconds == 10) {
         s_10sec.play()

@@ -173,6 +173,10 @@ io.on('connection', (socket) => {
         io.sockets.emit('timerVolume', data.timerVol)
   })
 
+  socket.on('answerShown', (item) => {
+        io.sockets.emit('sayAnswerShown', item)
+  })
+
   socket.on('updateCurrentQuestion', (num) => {
     data.currentQuestion = num
   })

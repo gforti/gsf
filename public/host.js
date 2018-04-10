@@ -84,6 +84,11 @@ socket.on('question', (data) => {
     displayChoices(data)
 })
 
+socket.on('sayAnswerShown', (item) => {
+    const li = document.querySelector(`ul.host li:nth-child(${item})`)
+    if (li) li.classList.remove('highlight')
+})
+
 
  function displayChoices(data) {
 
@@ -97,7 +102,7 @@ socket.on('question', (data) => {
         currentQuestionNumber.innerHTML = ~~data.currentQuestion+1
 
         data.choices.forEach( (answer, i) => {
-            html += `<li>
+            html += `<li ${!data.lock ? 'class="highlight"' : ''}>
                     <input  type="radio"
                             name="answer"
                             value="${answer}"

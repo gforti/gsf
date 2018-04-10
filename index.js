@@ -193,7 +193,7 @@ server.listen(port, () => {
     console.log('Listening on ', gameUrl)
     console.log('Host URL: ', `${gameUrl}/host`)
     console.log(`Login: ${AUTH.login}/${AUTH.password}`)
-    //open(`${gameUrl}/view`)
+    open(`${gameUrl}/view`)
    // open(`${gameUrl}/host`)
 })
 

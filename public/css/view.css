@@ -1,0 +1,312 @@
+
+body {
+    background-color: #1b2b34;
+    color: whitesmoke;
+    font-family: sans-serif;
+    background-image: radial-gradient(steelblue, #1b2b34);
+    background-attachment: fixed;
+    background-size: 100% 100%;	
+}
+
+
+.center{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  animation: bounce .5s ease infinite alternate;
+}
+.page{
+  width:400px;
+  height:600px;
+  padding:30px;
+  background:#222;
+  border-left:20px solid gold;
+  transform: rotate(-45deg) skewX(12deg) scale(.8);
+  box-shadow: -50px 50px 50px rgba(0,0,0,.5);
+  border-top-right-radius: 20px;
+}
+.page:before{
+  content:'';
+  width:30px;
+  height:100%;
+  background:#222;
+  position: absolute;
+  top:0;
+  left:0;
+  transform: skewy(-45deg) translate(-50px,-36px);
+}
+.page:after{
+  content:'';
+  width:105%;
+  height:30px;
+  background:#ccc;
+  position: absolute;
+  top:100%;
+  left:-8%;
+  transform: skew(-45deg)
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    text-shadow: 0 1px 0 #CCC,
+               0 2px 0 #CCC,
+               0 3px 0 #CCC,
+               0 4px 0 #CCC,
+               0 5px 0 #CCC,
+               0 6px 0 transparent,
+               0 7px 0 transparent,
+               0 8px 0 transparent,
+               0 9px 0 transparent,
+               0 10px 10px rgba(0, 0, 0, .6);
+    width: 100vw;
+    height: 100vh;
+    font-weight: 700;
+    font-size: 3rem;
+    text-transform: uppercase;
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    text-align: center;
+    animation: colors 1s ease infinite alternate;
+    background: linear-gradient(324deg, #1b2038, #514d94, #df4026, #d9c83d);
+    background-size: 800% 800%;
+    animation: introColors 30s ease infinite;
+}
+
+.cross {
+   color: goldenrod;
+   text-shadow: 0 1px 0 black;
+    
+}
+
+
+@keyframes introColors { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@keyframes bounce {
+  100% {
+    top: 46%;
+  }
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+.view-question {
+    font-size: 5.5vw;
+    text-align: center;
+    margin: 2vw;       
+}
+
+.question-swoop {
+    animation: entry 2s ease;
+}
+
+@keyframes entry {
+  from {clip-path: inset(0vh 200vw 0vw 0vw);}
+  to {clip-path: inset(0vh 0vw 0vw 0vw);}
+}
+
+.timer {
+    font-size: 4vw;
+    text-align: center;
+    margin: 1vw; 
+    border: 4px solid #ffc435;
+    color: #FAC863;
+    border-radius: 50%;
+    width: 5vw;
+    padding: 2vh;
+    margin: 1vw auto;
+}
+
+.view-answers ul {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr);
+    grid-template-rows: repeat( 2, 1fr);
+    font-size: 3vw;
+    grid-row-gap:    2vw;
+    grid-column-gap: 5vh;
+    list-style-type: upper-alpha;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.view-answers li {
+    grid: column 1fr / auto;
+    color: white;
+    margin-left: 5vw;
+    padding-left: 1vw;
+    padding-top: 0.4vw;
+    padding-bottom: 0.4vw;
+    font-family: sans-serif;
+    font-weight: bold;
+    border: 2px solid #FAC863;
+    border-radius: 5px;
+    border-left-width: 10px;
+    background-color: #a7883d;
+    text-transform: capitalize;   
+    font-weight: bold;
+    
+    background-color: #3474ad;
+    border-color: #09294a;
+    color: #dae0e6;
+}
+
+/*
+li:nth-child(1) {
+    background-color: #356997;
+    border-color: #6699CC;
+    color: #356997;
+}
+
+li:nth-child(2) {
+    background-color: #9e3844;
+    border-color: #EC5F67;
+    color: #9e3844;
+    
+}
+
+li:nth-child(3) {
+    background-color: #4f9261;
+    border-color: #99C794;
+    color: #4f9261;
+}
+
+li:nth-child(4) {
+    background-color: #7e5495;
+    border-color: #C594C5;
+    color: #7e5495;
+    
+}
+*/
+li:nth-child(even) {
+    direction: rtl;
+    margin-left: 0vw;
+    margin-right: 5vw;
+    border-left-width: 2px;
+    border-right-width: 10px;
+    
+}
+
+li span {
+    color: whitesmoke;
+    font-weight: normal;
+}
+
+li.highlight {
+    transition: background-color 1s ease;
+    background-color: highlight;
+}
+
+li.highlight span {
+    color: #333;
+}
+
+li.locked {
+    background-color: #fbc33b;
+}
+
+li.correct span {
+    color: black;    
+}
+
+li.correct{
+     background-color: lawngreen;
+}
+
+.info {
+    transition: all .5s;
+    
+    opacity: 0;
+    position: absolute;
+    top: -40vh;
+    left: 0;
+    font-family: 'Montserrat', sans-serif;  
+    font-weight: 700;
+    font-size: calc(3em + 1vw);
+    text-transform: uppercase;
+    
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+}
+
+.info-display {
+    top: -11vh;
+    opacity: 1;
+}
+
+
+.container {
+    overflow: hidden;
+    height: 92vh;
+}
+
+.card {
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.card div {
+  backface-visibility: hidden;
+}
+
+.card div.front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80vh;
+    position: absolute;
+    font-weight: 700;
+    font-size: calc(3em + 5vw);
+    top: 0;
+    left: 0;
+    text-transform: uppercase;
+    text-shadow: 1.5px 1.5px 0 #333, 0px 1.5px 0 #333, -1.5px -1.5px 0 #333, -1.5px -1.5px 0 #333, -1.5px 1.5px 0 #333, 1.5px -1.5px 0 #333, 0.7778174593px 0.7778174593px 0 #444, 1.5556349186px 1.5556349186px 0 #444, 2.3334523779px 2.3334523779px 0 #444, 3.1112698372px 3.1112698372px 0 #444, 3.8890872965px 3.8890872965px 0 #444, 4.6669047558px 4.6669047558px 0 #444, 5.4447222151px 5.4447222151px 0 #444, 6.2225396744px 6.2225396744px 0 #444, 7.0003571337px 7.0003571337px 0 #444, 7.7781745931px 7.7781745931px 0 #444;
+    
+}
+.card div.back {
+  transform: rotateY( 180deg );
+  margin-top: 10vh;
+  
+}
+
+.card.flipped {
+  transform: rotateY( 180deg );
+}
+
+
+.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.hide {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.wrong {
+    color: red;
+}
+
+.correct {
+    color: lawngreen;
+}

@@ -1,0 +1,41 @@
+extends layout
+
+block content
+    header=gameUrl
+   
+    div.container      
+      h2.js-active=`${users.length} joined`
+      ol.js-buzzes
+        each buzz in buzzes
+          li=`Team ${buzz}`
+      div.actions
+        button.js-clear.btn='Clear buzzes'
+        button.js-question.btn='Show Question'
+        button.pause.btn(class={'is-paused': pauseTime})='Pause Timer'
+        button.js-logo.btn='Logo'
+        button.js-music.btn(class={'is-paused': pauseMusic})='Music Toggle'
+        button.js-reveal.btn='Reveal Answer'
+        button.js-fx.btn(class={'is-paused': pauseSoundFX})='Sound FX Toggle'
+        button.js-intro-music.btn(class={'is-paused': pauseIntroMusic})='Intro Music'
+        input(name="musicVol" type="range" list="tickmarks" value="10" step="5" max="50")
+        div.js-total-questions.total-questions Question 
+            span=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
+            =` / ${totalQuestions}`
+        input(name="curQ" type="number" value=`${~~currentQuestion < 0 ? 0 : currentQuestion}` min="1" max=totalQuestions required='required')
+
+      div.js-question.view-question Question
+      div.js-answers                      
+        div.js-choices.host-choices
+        p
+          button.js-lock.host-lock Lock In
+
+
+    datalist(id="tickmarks")
+        - for (var x = 0; x <= 50; x=x+5)
+            option(value=x)
+        
+           
+    script(src='/socket.io/socket.io.js')
+    script(src='/tech.js')
+
+

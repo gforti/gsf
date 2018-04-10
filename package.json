@@ -1,0 +1,22 @@
+{
+  "name": "Game-Show",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Gabriel Forti",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.14.1",
+    "ip": "^1.1.5",
+    "open": "0.0.5",
+    "pug": "2.0.0-beta11",
+    "socketio": "1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}

@@ -2,14 +2,15 @@ doctype html
 html
   head
     title= title
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')       
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(charset='utf-8')       
     link(rel='stylesheet', href='/css/view.css')
   body
     div.js-intro.intro 
         div.center
             div.page
-                h1 Bible Trivia
-                h1.cross &#8224;
+                h1=title
+                h1.subtitle !{subtitle}
     div.js-container.container.hidden
       div.js-card.card
         div.front

@@ -2,6 +2,7 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 const open = require("open")
+const {title, subtitle, AUTH, PROTECT_HOST } = require('./config')
 
 const app = express();
 const server = http.Server(app);
@@ -10,8 +11,6 @@ const io = socketio(server);
 var port = process.env.PORT || 3000
 const host_ip = require('./host-ip')
 var gameUrl = `http://${host_ip}:${port}`
-
-const title = 'Game Show Trivia'
 
 let questions = require('./questions')
 
@@ -43,9 +42,6 @@ app.use(express.static('public'))
 app.set('view engine', 'pug')
 
 
-const AUTH = {login: 'host', password: '1220'}
-const PROTECT_HOST = false
-
 function checkHost(req, res, next) {
   // authentication middleware
   //const auth = {login: 'host', password: '1220'}
@@ -68,10 +64,10 @@ function checkHost(req, res, next) {
 }
 
 
-app.get('/', (req, res) => res.render('index', Object.assign({ title, gameUrl }, getData()) ))
-app.get('/view', (req, res) => res.render('view', Object.assign({ title, gameUrl }, getData()) ))
-app.get('/host', checkHost, (req, res) => res.render('host', Object.assign({ title, gameUrl }, getData()) ))
-app.get('/tech', checkHost, (req, res) => res.render('tech', Object.assign({ title, gameUrl }, getData()) ))
+app.get('/', (req, res) => res.render('index', Object.assign({ title, subtitle, gameUrl }, getData()) ))
+app.get('/view', (req, res) => res.render('view', Object.assign({ title, subtitle, gameUrl }, getData()) ))
+app.get('/host', checkHost, (req, res) => res.render('host', Object.assign({ title, subtitle, gameUrl }, getData()) ))
+app.get('/tech', checkHost, (req, res) => res.render('tech', Object.assign({ title, subtitle, gameUrl }, getData()) ))
 
 io.on('connection', (socket) => {
 

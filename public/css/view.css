@@ -132,15 +132,13 @@ body {
 
 .view-answers ul {
     display: grid;
-    grid-template-columns: repeat( 2, 1fr);
-    grid-template-rows: repeat( 2, 1fr);
+    grid-template-columns: repeat( 2, 1fr);    
     font-size: 3vw;
     grid-row-gap:    2vw;
     grid-column-gap: 5vh;
     list-style-type: upper-alpha;
     padding: 0;
-    margin: 0;
-    
+    margin: 0;    
 }
 
 .view-answers li {
@@ -162,6 +160,7 @@ body {
     background-color: #3474ad;
     border-color: #09294a;
     color: #dae0e6;
+    text-align: center;
 }
 
 /*

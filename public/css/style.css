@@ -47,6 +47,10 @@ header {
   font-weight: bold;
 }
 
+header.host {
+     font-size: 2.5vw;
+}
+
 .logo { 
   max-width: 200px;
   width: 100%;
@@ -160,14 +164,9 @@ textarea:required:valid
 .actions-host {
     display: grid;
     grid-template-columns: repeat( 4, 1fr);
-    grid-template-rows: repeat( 4, 1fr);
     grid-row-gap:    1vw;
     grid-column-gap: 2vw;
-}
-
-.actions-host {
-    grid-template-rows: repeat( 1, 1fr);
-    
+    font-size: 3vw;
 }
 
 
@@ -244,8 +243,8 @@ input[type="submit"][disabled]:hover
  
  ul.view-answers  {
     display: grid;
-    font-size: 3vw;
-    grid-row-gap:    2vw;
+    font-size: 3vw;    
+    grid-row-gap:    0vw;
     grid-column-gap: 5vh;
     list-style-type: upper-alpha;
     padding: 0;
@@ -254,7 +253,6 @@ input[type="submit"][disabled]:hover
 }
 
 ul.view-answers li  {
-    grid: column 1fr / auto;
     color: white;
     margin-left: 5vw;
     font-family: sans-serif;
@@ -349,6 +347,10 @@ li.highlight span {
     margin: 1vw;    
 }
 
+ ul.view-answers.host {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr);
+ }
 /*
  ul.view-answers.host {
     display: grid;
@@ -423,6 +425,7 @@ li.highlight span {
     ul.view-answers.host,
     li.view-answers.host {
         font-size: 6vw;
+        grid-template-columns: repeat( 2, 1fr);
     }
       
 }
@@ -433,8 +436,7 @@ li.highlight span {
     ul.view-answers {
         display: grid;
         grid-template-columns: repeat( 2, 1fr);
-        grid-template-rows: repeat( 2, 1fr);
-        grid-row-gap:    2vw;
+        grid-row-gap:    0vw;
         grid-column-gap: 5vh;
         list-style-type: upper-alpha;
         padding: 0;
@@ -443,7 +445,6 @@ li.highlight span {
     }
 
     li.view-answers {
-       grid: column 1fr / auto;
        color: white;
        margin-left: 5vw;
        padding-left: 1vw;

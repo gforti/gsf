@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    header Host View
+    header.host Host View
    
     div.container
       ol.js-buzzes
@@ -13,12 +13,11 @@ block content
         button.pause.btn(class={'is-paused': pauseTime})='Pause Timer'
         button.js-reveal.btn='Reveal Answer'
                
-      div.js-total-questions.total-questions Question 
-            big 
+      div.js-total-questions.total-questions  
+            big Question                
               span=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
               =` / ${totalQuestions}`
-            big
-                strong=' - Time : '
+            big=' - Time : '
             big.timer-host 0
       div.js-question.view-question Question
       div.js-answers                      

@@ -20,8 +20,9 @@ reveal.addEventListener('click', revealAnswer)
 
 let pauseTime = false
 
-const Q_DELAY = 3500
-let QTimer = 0
+const Q_DELAY = 2500
+let QTime = 0
+let QTimer = null
 
 socket.on('connected', (data) => {
   pauseTime = data.pauseTime
@@ -101,7 +102,7 @@ socket.on('sayAnswerShown', (item) => {
         lock.disabled = false
         reveal.disabled = false
         viewquestion.innerHTML = data.question
-        QTimer = Math.ceil((Math.ceil(data.question.split(" ").length/3) * 1000 + Q_DELAY) / 1000)
+        QTime = Math.ceil(data.question.split(" ").length/3)+2
         let html = '<ul class="view-answers host">';
         currentQuestionNumber.innerHTML = ~~data.currentQuestion+1
 
@@ -117,15 +118,17 @@ socket.on('sayAnswerShown', (item) => {
          })
          html += `</ul> <p> <big>Answer: ${data.answer}</big></p>`
          choices.innerHTML = html
-         setTimeout(countdown, 1000)
+         timer.innerHTML = QTime
+         clearTimeout(QTimer)
+         QTimer = setTimeout(countdown, Q_DELAY)
     }
 }
 
 function countdown() {
-    if (QTimer > 0) {
-        QTimer--
-        timer.innerHTML = QTimer
-        setTimeout(countdown, 1000)
+    if (QTime > 0) {
+        QTime--
+        timer.innerHTML = QTime
+        QTimer = setTimeout(countdown, 1000)
     }
 }
 

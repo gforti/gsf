@@ -10,6 +10,7 @@ const reveal = document.querySelector('.js-reveal')
 const soundFX = document.querySelector('.js-fx')
 const introMusic = document.querySelector('.js-intro-music')
 const currentQuestionNumber = document.querySelector('.js-total-questions span')
+const timer = document.querySelector('.timer-host')
 
 const answers = document.querySelector('.js-answers')
 const choices = document.querySelector('.js-choices')
@@ -29,6 +30,8 @@ let pauseTime = false
 let pauseMusic = true
 let pauseSoundFX = false
 let pauseIntroMusic = true
+const Q_DELAY = 3500
+let QTimer = 0
 
 
 socket.on('connected', (data) => {
@@ -180,6 +183,7 @@ socket.on('sayAnswerShown', (item) => {
         lock.disabled = false
         reveal.disabled = false
         viewquestion.innerHTML = data.question
+        QTimer = Math.ceil((Math.ceil(data.question.split(" ").length/3) * 1000 + Q_DELAY) / 1000)
         let html = '<ul class="view-answers host">';
         currentQuestionNumber.innerHTML = ~~data.currentQuestion+1
         currQuestion.value = ~~data.currentQuestion+1
@@ -195,8 +199,18 @@ socket.on('sayAnswerShown', (item) => {
          })
          html += `</ul> <p> <big>Answer: ${data.answer}</big></p>`
          choices.innerHTML = html
-
+         setTimeout(countdown, 1000)
     }
+}
+
+
+function countdown() {
+    if (QTimer > 0) {
+        QTimer--
+        timer.innerHTML = QTimer
+        setTimeout(countdown, 1000)
+    }
+
 }
 
 function lockChoice(){

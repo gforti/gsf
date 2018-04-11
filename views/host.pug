@@ -17,6 +17,9 @@ block content
             big 
               span=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
               =` / ${totalQuestions}`
+            big
+                strong=' - Time: '
+            big.timer-host 0
       div.js-question.view-question Question
       div.js-answers                      
         div.js-choices.host-choices

@@ -23,6 +23,7 @@ block content
             =` / ${totalQuestions}`
         input(name="curQ" type="number" value=`${~~currentQuestion < 0 ? 0 : currentQuestion}` min="1" max=totalQuestions required='required')
         input(name="timerVol" type="range" list="tickmarks" value="10" step="5" max="100")
+        div.timer-host 0
 
 
       div.js-question.view-question Question

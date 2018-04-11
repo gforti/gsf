@@ -265,7 +265,7 @@ function startTimer() {
     question.classList.add('question-swoop')
     question.classList.remove('hide')
 
-    let delay = Math.ceil(words.length/2) * 1000
+    let delay = Math.ceil(words.length/3) * 1000
     const DELAY_BY = 1500
     const ul = answers.querySelector('ul')
 

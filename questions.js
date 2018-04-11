@@ -46,5 +46,18 @@ module.exports = [
     time: 30,
     lock: true
 }
+,
+{
+    question: "This is going to be one of those very long questions about nothing.",
+    choices: [
+        'nothing worth mentioning',
+        'something that fits I think',
+        'anything this long',
+        'onething cool'
+    ],
+    answer: 'nothing worth mentioning',
+    time: 10,
+    lock: false
+}
 ];
 

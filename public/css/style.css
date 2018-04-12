@@ -180,6 +180,55 @@ input[name="timerVol"] {
     grid-column: 1 / 3;
 }
 
+
+input[type="range"]
+{
+    -webkit-appearance: none;
+    width: 80%;
+    height: 15px;
+    border-radius: 5px;   
+    background: #f8f7f7;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-left: 4vw;
+    margin-right: 4vw;
+        margin-top: auto;
+    margin-bottom: auto;
+}
+
+input[type="range"]::before
+{
+    content: attr(data-before);
+    margin-left: -4vw;
+    color: lime;
+    top: -2.5vh;
+    position: relative;
+    font-size: 2vw;
+    font-weight: bold;
+}
+input[type="range"]::after
+{
+    content: "100";
+    margin-right: -4vw;
+    color: yellow;
+    top: -2.5vh;
+    position: relative;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; 
+    background: lime;
+    cursor: pointer;
+}
+
 .timer {
     text-align: center;
     font-size: 6em;

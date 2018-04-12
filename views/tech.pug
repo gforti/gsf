@@ -17,12 +17,12 @@ block content
         button.js-reveal.btn='Reveal Answer'
         button.js-fx.btn(class={'is-paused': pauseSoundFX})='Sound FX Toggle'
         button.js-intro-music.btn(class={'is-paused': pauseIntroMusic})='Intro Music'
-        input(name="musicVol" type="range" list="tickmarks" value="10" step="5" max="100")
+        input(name="musicVol" type="range" list="tickmarks" value="10" step="5" max="100" data-before="0")
         div.js-total-questions.total-questions Question 
             span=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
             =` / ${totalQuestions}`
         input(name="curQ" type="number" value=`${~~currentQuestion < 0 ? 0 : currentQuestion}` min="1" max=totalQuestions required='required')
-        input(name="timerVol" type="range" list="tickmarks" value="10" step="5" max="100")
+        input(name="timerVol" type="range" list="tickmarks" value="10" step="5" max="100" data-before="0")
         div.timer-host 0
 
 

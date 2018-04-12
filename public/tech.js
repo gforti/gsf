@@ -42,7 +42,9 @@ socket.on('connected', (data) => {
   pauseIntroMusic = data.pauseIntroMusic
 
   musicVol.value = data.musicVol *100
+  musicVol.dataset.before = musicVol.value
   timerVol.value = data.timerVol *100
+  timerVol.dataset.before = timerVol.value
 
   if (data.questionReady ) {
        displayChoices(data)
@@ -129,10 +131,12 @@ function toogleSoundFX() {
 
 function updateMusicVol() {
     socket.emit('volMusic', musicVol.value*0.01)
+    musicVol.dataset.before = musicVol.value
 }
 
 function updateTimerVol() {
     socket.emit('volTimer', timerVol.value*0.01)
+    timerVol.dataset.before = timerVol.value
 }
 
 function updateCurrQuestion() {

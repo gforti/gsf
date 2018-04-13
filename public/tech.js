@@ -1,6 +1,6 @@
 const socket = io()
 const active = document.querySelector('.js-active')
-const buzzList = document.querySelector('.js-buzzes')
+const buzzList = document.querySelector('.buzz-in')
 const clear = document.querySelector('.js-clear')
 const question = document.querySelector('.js-question')
 const pause = document.querySelector('.pause')
@@ -59,9 +59,7 @@ socket.on('active', (numberActive) => {
 })
 
 socket.on('buzzes', (buzzes) => {
-  buzzList.innerHTML = buzzes
-    .map(team => `<li>Team ${team}</li>`)
-    .join('')
+  buzzList.innerHTML = buzzes.length ? `Team ${buzzes[0]}` : ''
 })
 
 clear.addEventListener('click', () => {

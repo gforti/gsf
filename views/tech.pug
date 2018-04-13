@@ -4,17 +4,10 @@ block content
     header=gameUrl
    
     div.container      
-      h2.js-active=`${users.length} joined`
-      ol.js-buzzes
-        each buzz in buzzes
-          li=`Team ${buzz}`
-      div.actions
-        button.js-clear.btn='Clear buzzes'
-        button.js-question.btn='Show Question'
-        button.pause.btn(class={'is-paused': pauseTime})='Pause Timer'
-        button.js-logo.btn='Logo'
+      h1.js-active=`${users.length} joined`      
+      div.actions        
         button.js-music.btn(class={'is-paused': pauseMusic})='Music Toggle'
-        button.js-reveal.btn='Reveal Answer'
+        button.js-logo.btn='Logo'
         button.js-fx.btn(class={'is-paused': pauseSoundFX})='Sound FX Toggle'
         button.js-intro-music.btn(class={'is-paused': pauseIntroMusic})='Intro Music'
         input(name="musicVol" type="range" list="tickmarks" value="10" step="5" max="100" data-before="0")
@@ -23,8 +16,16 @@ block content
             =` / ${totalQuestions}`
         input(name="curQ" type="number" value=`${~~currentQuestion < 0 ? 0 : currentQuestion}` min="1" max=totalQuestions required='required')
         input(name="timerVol" type="range" list="tickmarks" value="10" step="5" max="100" data-before="0")
-        div.timer-host 0
+        div='Q Time : '
+          span.timer-host 0
+        div.buzz-in
+            if buzzes[0]
+              =`Team: ${buzzes[0]}`
 
+        button.js-clear.btn='Clear buzzes'
+        button.js-question.btn='Show Question'
+        button.pause.btn(class={'is-paused': pauseTime})='Pause Timer'
+        button.js-reveal.btn='Reveal Answer'
 
       div.js-question.view-question Question
       div.js-answers                      

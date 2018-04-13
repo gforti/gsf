@@ -44,6 +44,8 @@ ol li:first-child {
   display: none !important;
 }
 
+
+
 header {  
   background-color: #fff;
   color: #000;
@@ -110,6 +112,7 @@ button:focus {
   max-width: 20rem;
   margin-left: auto;
   margin-right: auto;
+  transition: margin-top 1s ease-out 0s;
 }
 
 .buzzer:active {
@@ -117,6 +120,11 @@ button:focus {
    transition: 0.1s all ease-out;
 }
 
+.hidden-fly {
+  position: absolute;
+  left:38%;
+  margin-top: -300vh;
+}
 
 .secondary {
   background-color: #ddd;
@@ -170,7 +178,10 @@ textarea:required:valid
     grid-template-columns: repeat( 4, 1fr);
     grid-row-gap:    1vw;
     grid-column-gap: 2vw;
-    font-size: 3vw;
+    font-size: 3vw;    
+}
+
+.actions {
     margin-top: 8vh;
 }
 

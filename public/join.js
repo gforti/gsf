@@ -70,7 +70,7 @@ function first(data) {
         buzzer.classList.add('first')
         displayChoices(data)
     } else if ( data.first.length ) {
-       buzzer.classList.add('hidden')
+       buzzer.classList.add('hidden-fly')
     }
 }
 
@@ -80,7 +80,7 @@ function first(data) {
     if ( data.choices && data.choices.length && user.team === data.first ) {
         answers.classList.remove('hidden')
         viewquestion.classList.remove('hidden')
-        buzzer.classList.add('hidden')
+        buzzer.classList.add('hidden-fly')
         viewquestion.innerHTML = data.question
         if (!data.lock) {
             let html = '<ul class="view-answers buzz">';
@@ -101,14 +101,14 @@ function disableBuzzer() {
 }
 
 function enableBuzzer() {
-    buzzer.classList.remove('hidden')
+    buzzer.classList.remove('hidden-fly')
     buzzer.disabled = false
 }
 
  function closeChoice() {
     answers.classList.add('hidden')
     viewquestion.classList.add('hidden')
-    buzzer.classList.remove('hidden')
+    buzzer.classList.remove('hidden-fly')
     answers.innerHTML = ''
     viewquestion.innerHTML = ''
 }

@@ -188,30 +188,50 @@ input[name="timerVol"] {
 input[type="range"]
 {
     -webkit-appearance: none;
-    width: 80%;
-    height: 15px;
+    height: 10px;
     border-radius: 5px;   
-    background: #f8f7f7;
+    background: #ddd;
     outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    margin-left: 4vw;
-    margin-right: 4vw;
-        margin-top: auto;
+    margin-top: auto;
     margin-bottom: auto;
+  
+}
+
+input[type="range"]::after
+{
+    content: attr(data-before);
+    color: lime;
+    top: -5.5vh;
+    position: relative;
+    font-size: 2vw;
+    font-weight: bold;
+    margin-right: -4vw;
+
 }
 
 input[type="range"]::before
 {
-    content: attr(data-before);
-    margin-left: -4vw;
-    color: lime;
-    top: -2.5vh;
+    color: whitesmoke;
+    top: -5.5vh;
     position: relative;
     font-size: 2vw;
     font-weight: bold;
+
+    margin-right: -6vw;
 }
+
+input[name="musicVol"]::before
+{
+    content: 'Music';
+}
+
+input[name="timerVol"]::before
+{
+    content: 'Timer';
+}
+
+
+
 
 big {
     font-size: xx-large;
@@ -220,8 +240,8 @@ big {
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%; 
     background: lime;
     cursor: pointer;
@@ -319,7 +339,21 @@ ul.view-answers.buzz li  {
     
     background-color: transparent;
     border-color: transparent;
+    color: #dae0e6;
+    text-align: left;
+}
+
+ul.view-answers.buzz li label  {
+    
     color: #f8f7f7;
+}
+
+.buzz-in {
+    color: yellow;
+}
+
+.the-answer {
+    font-size: 2vw;
 }
 
 /*

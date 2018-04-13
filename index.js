@@ -71,14 +71,14 @@ app.get('/tech', checkHost, (req, res) => res.render('tech', Object.assign({ tit
 
 io.on('connection', (socket) => {
 
-    socket.emit('connected', getData())
+  socket.emit('connected', getData())
 
 
   socket.on('join', (user) => {
     data.users.add(socket.id)
     io.emit('active', [...data.users].length)
     if(data.first){
-        socket.emit('first', data.first);
+        socket.emit('first', Object.assign({}, getData()));
     }
     console.log(`${user.team} joined!`)
   })
@@ -87,7 +87,7 @@ io.on('connection', (socket) => {
     if (!data.questionReady) return
     if (!data.first) {
         data.first = user.team
-        socket.emit('first', Object.assign({}, getData()))
+        io.emit('first', Object.assign({}, getData()))
     }
     data.buzzes.add(`${user.team}`)
     io.emit('buzzes', [...data.buzzes])

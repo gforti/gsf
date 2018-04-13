@@ -65,15 +65,12 @@ socket.on('disableBuzzer', () => {
 
 
 function first(data) {
+    console.log(data)
     if ( user.team === data.first) {
         buzzer.classList.add('first')
-        if (!data.lock) {
-            displayChoices(data)
-        } else {
-            closeChoice()
-        }
-    } else if ( user.team.length ) {
-       // buzzer.classList.add('hidden')
+        displayChoices(data)
+    } else if ( data.first.length ) {
+       buzzer.classList.add('hidden')
     }
 }
 
@@ -85,16 +82,17 @@ function first(data) {
         viewquestion.classList.remove('hidden')
         buzzer.classList.add('hidden')
         viewquestion.innerHTML = data.question
-        let html = '<ul class="view-answers buzz">';
-
-        data.choices.forEach( (answer, i) => {
-            html += `<li>
-                    <label for="${answer}" class="label">
-                    ${answer}
-                </label></li>`
-        })
-        html += '</ul>'
-        answers.innerHTML = html
+        if (!data.lock) {
+            let html = '<ul class="view-answers buzz">';
+            data.choices.forEach( (answer, i) => {
+                html += `<li>
+                        <label for="${answer}" class="label">
+                        ${answer}
+                    </label></li>`
+            })
+            html += '</ul>'
+            answers.innerHTML = html
+        }
     }
 }
 

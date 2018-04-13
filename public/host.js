@@ -1,14 +1,13 @@
 const socket = io()
 
-const buzzList = document.querySelector('.buzz')
+const buzzList = document.querySelector('.buzz-in')
 const clear = document.querySelector('.js-clear')
 const question = document.querySelector('.js-question')
 const pause = document.querySelector('.pause')
 const timer = document.querySelector('.timer-host')
 
-const currentQuestionNumber = document.querySelector('big span')
+const currentQuestionNumber = document.querySelector('.current-question')
 
-const answers = document.querySelector('.js-answers big')
 const choices = document.querySelector('.js-choices')
 const lock = document.querySelector('.js-lock')
 const reveal = document.querySelector('.js-reveal')

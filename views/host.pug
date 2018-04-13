@@ -9,15 +9,15 @@ block content
         button.js-question.btn='Show Question'
         button.pause.btn(class={'is-paused': pauseTime})='Pause Timer'
         button.js-reveal.btn='Reveal Answer'
-        big Question                
-          span=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
+        div Question                
+          span.current-question=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
           =` / ${totalQuestions}`
-        big='Question Time : '
-          big.timer-host 0
-        big.buzz
+        div='Q Time : '
+          span.timer-host 0
+        div.buzz-in
             if buzzes[0]
-              big.buzz=`Team: ${buzzes[0]}`
-        big.the-answer
+              =`Team: ${buzzes[0]}`
+        div.the-answer
       div.js-question.view-question Question
       div.js-answers                       
         div.js-choices.host-choices

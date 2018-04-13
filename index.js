@@ -127,7 +127,7 @@ io.on('connection', (socket) => {
 
   socket.on('questionClose', () => {
     data.questionReady =  false
-    io.sockets.emit('disableBuzzer', null)
+    io.sockets.emit('disableBuzzer')
   })
 
   socket.on('selection', (choice) => {
@@ -175,6 +175,10 @@ io.on('connection', (socket) => {
 
   socket.on('answerShown', (item) => {
         io.sockets.emit('sayAnswerShown', item)
+  })
+
+  socket.on('unLockLogo', () => {
+        io.sockets.emit('unLockLogo')
   })
 
   socket.on('updateCurrentQuestion', (num) => {

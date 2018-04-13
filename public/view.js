@@ -54,7 +54,8 @@ let QuestionSeconds = 0
 let startTimerTimer =
     cardBackTimer =
     cardTimer = null
-let answer1Timer, answer2Timer, answer3Timer, answer4Timer, questionReadyTimer
+let answer1Timer, answer2Timer, answer3Timer,
+    answer4Timer, questionReadyTimer, showCorrectAnswerTimer
 
 let words = ''
 
@@ -120,6 +121,7 @@ function prepareQuestion(data) {
     clearTimeout(answer3Timer)
     clearTimeout(answer4Timer)
     clearTimeout(questionReadyTimer)
+    clearTimeout(showCorrectAnswerTimer)
 
     introTrack.pause()
     pauseTimerMusic()
@@ -170,7 +172,6 @@ socket.on('answerlock', (answerChosen) => {
     chosenAnswer = answerChosen
     questionClose()
     if(!pauseSoundFX) s_lock.play()
-
 })
 
 function isQuestionClosed() {
@@ -330,7 +331,7 @@ function questionClose(show = true) {
     socket.emit('questionClose')
     info.classList.add('info-display')
     if (show)
-        setTimeout(showCorrectAnswer, 3000)
+        showCorrectAnswerTimer = setTimeout(showCorrectAnswer, 3000)
 }
 
 function showCorrectAnswer() {
@@ -351,7 +352,7 @@ function showCorrectAnswer() {
         info.classList.add('wrong')
         if(!pauseSoundFX) s_wrong.play()
     }
-
+    socket.emit('unLockLogo')
 }
 
 

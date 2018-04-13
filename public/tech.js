@@ -79,7 +79,6 @@ reveal.addEventListener('click', revealAnswer)
 question.addEventListener('click', showQuestion)
 
 function revealAnswer(){
-    disableChoice()
     socket.emit('lock', '')
 }
 
@@ -178,6 +177,10 @@ socket.on('sayAnswerShown', (item) => {
 })
 
 
+socket.on('unLockLogo', () => {
+   logo.disabled = false
+})
+
  function displayChoices(data) {
 
     choices.innerHTML = ''
@@ -222,7 +225,6 @@ function lockChoice(){
 
     if (answer) {
         answer = answer.value
-        disableChoice()
         socket.emit('lock', answer)
     }
 

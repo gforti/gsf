@@ -23,7 +23,7 @@ p {
 }
 
 ol {
-  font-size: 1.4rem;
+  font-size: 2.2vw;
   text-align: left;  
   display: flex;
   align-items: center;
@@ -34,6 +34,10 @@ ol {
 
 li {
   margin: 0.5em 0;
+}
+
+ol li:first-child {
+    color: yellow;
 }
 
 .hidden {
@@ -208,15 +212,9 @@ input[type="range"]::before
     font-size: 2vw;
     font-weight: bold;
 }
-input[type="range"]::after
-{
-    content: "100";
-    margin-right: -4vw;
-    color: yellow;
-    top: -2.5vh;
-    position: relative;
-    font-size: 2vw;
-    font-weight: bold;
+
+big {
+    font-size: xx-large;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -315,6 +313,13 @@ ul.view-answers li  {
     background-color: #3474ad;
     border-color: #dae0e6;
     color: #dae0e6;
+}
+
+ul.view-answers.buzz li  {
+    
+    background-color: transparent;
+    border-color: transparent;
+    color: #f8f7f7;
 }
 
 /*

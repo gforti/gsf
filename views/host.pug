@@ -3,24 +3,23 @@ extends layout
 block content
     header.host Host View
    
-    div.container
-      ol.js-buzzes
-        each buzz in buzzes
-          li=`Team ${buzz}`
+    div.container      
       div.actions-host
         button.js-clear.btn='Clear buzzes'
         button.js-question.btn='Show Question'
         button.pause.btn(class={'is-paused': pauseTime})='Pause Timer'
         button.js-reveal.btn='Reveal Answer'
-               
-      div.js-total-questions.total-questions  
-            big Question                
-              span=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
-              =` / ${totalQuestions}`
-            big=' - Time : '
-            big.timer-host 0
+        big Question                
+          span=`${~~currentQuestion < 0 ? 0 : currentQuestion}`
+          =` / ${totalQuestions}`
+        big='Question Time : '
+          big.timer-host 0
+        big.buzz
+            if buzzes[0]
+              big.buzz=`Team: ${buzzes[0]}`
+        big.the-answer
       div.js-question.view-question Question
-      div.js-answers                      
+      div.js-answers                       
         div.js-choices.host-choices
         p
           button.js-lock.host-lock Lock In

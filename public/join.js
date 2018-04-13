@@ -5,6 +5,7 @@ const joined = document.querySelector('.js-joined')
 const buzzer = document.querySelector('.js-buzzer')
 const joinedInfo = document.querySelector('.js-joined-info')
 const answers = document.querySelector('.js-answers')
+const viewquestion = document.querySelector('.js-question')
 
 let user = {}
 
@@ -71,15 +72,20 @@ function first(data) {
         } else {
             closeChoice()
         }
+    } else if ( user.team.length ) {
+       // buzzer.classList.add('hidden')
     }
 }
 
  function displayChoices(data) {
     answers.innerHTML = ''
+    viewquestion.innerHTML = ''
     if ( data.choices && data.choices.length && user.team === data.first ) {
         answers.classList.remove('hidden')
+        viewquestion.classList.remove('hidden')
         buzzer.classList.add('hidden')
-        let html = '<ul class="view-answers">';
+        viewquestion.innerHTML = data.question
+        let html = '<ul class="view-answers buzz">';
 
         data.choices.forEach( (answer, i) => {
             html += `<li>
@@ -97,11 +103,14 @@ function disableBuzzer() {
 }
 
 function enableBuzzer() {
+    buzzer.classList.remove('hidden')
     buzzer.disabled = false
 }
 
  function closeChoice() {
     answers.classList.add('hidden')
+    viewquestion.classList.add('hidden')
     buzzer.classList.remove('hidden')
     answers.innerHTML = ''
+    viewquestion.innerHTML = ''
 }

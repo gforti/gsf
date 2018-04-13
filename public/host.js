@@ -1,18 +1,19 @@
 const socket = io()
 
-const buzzList = document.querySelector('.js-buzzes')
+const buzzList = document.querySelector('.buzz')
 const clear = document.querySelector('.js-clear')
 const question = document.querySelector('.js-question')
 const pause = document.querySelector('.pause')
 const timer = document.querySelector('.timer-host')
 
-const currentQuestionNumber = document.querySelector('.js-total-questions span')
+const currentQuestionNumber = document.querySelector('big span')
 
-const answers = document.querySelector('.js-answers')
+const answers = document.querySelector('.js-answers big')
 const choices = document.querySelector('.js-choices')
 const lock = document.querySelector('.js-lock')
 const reveal = document.querySelector('.js-reveal')
 const viewquestion = document.querySelector('.view-question')
+const theAnswer = document.querySelector('.the-answer')
 
 lock.addEventListener('click', lockChoice)
 reveal.addEventListener('click', revealAnswer)
@@ -34,14 +35,11 @@ socket.on('connected', (data) => {
 })
 
 socket.on('buzzes', (buzzes) => {
-  buzzList.innerHTML = buzzes
-    .map(team => `<li>Team ${team}</li>`)
-    .join('')
+    buzzList.innerHTML =  buzzes.length ? `Team ${buzzes[0]}` : ''
 })
 
 clear.addEventListener('click', () => {
   socket.emit('clear')
-  console.log('send clear')
 })
 
 
@@ -89,9 +87,13 @@ socket.on('question', (data) => {
 })
 
 socket.on('sayAnswerShown', (item) => {
+    highlightAnswerShown(item)
+})
+
+function highlightAnswerShown(item) {
     const li = document.querySelector(`ul.host li:nth-child(${item})`)
     if (li) li.classList.remove('highlight')
-})
+}
 
 
  function displayChoices(data) {
@@ -116,7 +118,8 @@ socket.on('sayAnswerShown', (item) => {
                     ${answer}
                 </label></li>`
          })
-         html += `</ul> <p> <big>Answer: ${data.answer}</big></p>`
+         html += `</ul>`
+         theAnswer.innerHTML = `Answer: ${data.answer}`
          choices.innerHTML = html
          timer.innerHTML = QTime
          clearTimeout(QTimer)

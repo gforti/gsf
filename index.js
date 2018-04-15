@@ -136,6 +136,8 @@ io.on('connection', (socket) => {
 
   socket.on('lock', (answerChosen) => {
     io.sockets.emit('answerlock', answerChosen)
+    io.sockets.emit('score', answerChosen, Object.assign({}, getData()) )
+
   })
 
   socket.on('pauseTime', (pauseTime) => {

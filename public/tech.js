@@ -34,6 +34,13 @@ const Q_DELAY = 2500
 let QTime = 0
 let QTimer = null
 
+let score = {}
+
+const getScoreInfo = () => {
+  score = JSON.parse(localStorage.getItem('score')) || {}
+}
+
+window.addEventListener('DOMContentLoaded', getScoreInfo)
 
 socket.on('connected', (data) => {
   pauseTime = data.pauseTime
@@ -179,6 +186,13 @@ socket.on('sayAnswerShown', (item) => {
 
 socket.on('unLockLogo', () => {
    logo.disabled = false
+})
+
+socket.on('score', (answer, data) => {
+
+   score[~~data.currentQuestion+1] = { team:data.first, answer:answer, correct: answer === data.answer }
+   console.log(score)
+   localStorage.setItem('score', JSON.stringify(score))
 })
 
  function displayChoices(data) {

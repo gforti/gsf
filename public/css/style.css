@@ -333,32 +333,36 @@ input[type="submit"][disabled]:hover
 }
 
 ul.view-answers li  {
-    color: white;
+    
     margin-left: 5vw;
     font-family: sans-serif;
     font-weight: bold;
     border: 2px solid #FAC863;
     border-radius: 5px;
-    border-left-width: 10px;
-    background-color: #a7883d;
+    
+    
     text-transform: capitalize;  
     
     background-color: #3474ad;
     border-color: #dae0e6;
     color: #dae0e6;
+  
 }
 
 ul.view-answers.buzz li  {
     
     background-color: transparent;
     border-color: transparent;
-    color: #dae0e6;
+    color: #f1c40f;
     text-align: left;
+
 }
+
 
 ul.view-answers.buzz li label  {
     
     color: #f8f7f7;
+    cursor: default;
 }
 
 .buzz-in {
@@ -411,6 +415,7 @@ ul.view-answers li:nth-child(4) {
     text-transform: capitalize;
     font-weight: normal;
     height: 100%;
+        cursor: pointer;
  }
 
           
@@ -551,9 +556,8 @@ li.highlight span {
        padding-left: 1vw;
        font-family: sans-serif;
        font-weight: bold;
-       border: 2px solid #FAC863;
+      
        border-radius: 5px;
-       border-left-width: 10px;
        background-color: #a7883d;
        text-transform: capitalize;   
        font-weight: bold;

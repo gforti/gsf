@@ -2,7 +2,7 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 const open = require("open")
-const {title, subtitle, AUTH, PROTECT_HOST } = require('./config')
+const {title, subtitle, AUTH, PROTECT_GAME } = require('./config')
 
 const app = express();
 const server = http.Server(app);
@@ -47,7 +47,7 @@ function checkHost(req, res, next) {
   //const auth = {login: 'host', password: '1220'}
   // parse login and password from headers
 
-  if (PROTECT_HOST){
+  if (PROTECT_GAME){
     const b64auth = (req.headers.authorization || '').split(' ')[1] || ''
     const [login, password] = new Buffer(b64auth, 'base64').toString().split(':')
 
@@ -64,8 +64,8 @@ function checkHost(req, res, next) {
 }
 
 
-app.get('/', (req, res) => res.render('index', Object.assign({ title, subtitle, gameUrl }, getData()) ))
-app.get('/view', (req, res) => res.render('view', Object.assign({ title, subtitle, gameUrl }, getData()) ))
+app.get('/', checkHost, (req, res) => res.render('index', Object.assign({ title, subtitle, gameUrl }, getData()) ))
+app.get('/view', checkHost, (req, res) => res.render('view', Object.assign({ title, subtitle, gameUrl }, getData()) ))
 app.get('/host', checkHost, (req, res) => res.render('host', Object.assign({ title, subtitle, gameUrl }, getData()) ))
 app.get('/tech', checkHost, (req, res) => res.render('tech', Object.assign({ title, subtitle, gameUrl }, getData()) ))
 

@@ -24,6 +24,7 @@ let data = {
   pauseMusic: true,
   pauseSoundFX: false,
   pauseIntroMusic: true,
+  pauseShowdownMusic: true,
   questionReady: false,
   musicVol: 0.1,
   timerVol: 0.1
@@ -158,6 +159,11 @@ io.on('connection', (socket) => {
   socket.on('introTrackEnded', () => {
      data.pauseIntroMusic = true
      io.sockets.emit('introTrackEnd')
+  })
+
+  socket.on('pauseShowdownMusic', (pauseShowdownMusic) => {
+      data.pauseShowdownMusic = pauseShowdownMusic
+    io.sockets.emit('showdownMusicToggle', pauseShowdownMusic)
   })
 
   socket.on('pauseSoundFX', (soundFX) => {

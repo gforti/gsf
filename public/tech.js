@@ -9,13 +9,15 @@ const music = document.querySelector('.js-music')
 const reveal = document.querySelector('.js-reveal')
 const soundFX = document.querySelector('.js-fx')
 const introMusic = document.querySelector('.js-intro-music')
+const showdownMusic = document.querySelector('.js-showdown-music')
 const currentQuestionNumber = document.querySelector('.js-total-questions span')
 const timer = document.querySelector('.timer-host')
 
 const answers = document.querySelector('.js-answers')
 const choices = document.querySelector('.js-choices')
 const lock = document.querySelector('.js-lock')
-const viewquestion = document.querySelector('.view-question')
+const viewquestion = document.querySelector('.js-view-question')
+const note = document.querySelector('.js-note')
 const musicVol = document.querySelector('input[name="musicVol"]')
 const timerVol = document.querySelector('input[name="timerVol"]')
 const currQuestion = document.querySelector('input[name="curQ"]')
@@ -30,6 +32,8 @@ let pauseTime = false
 let pauseMusic = true
 let pauseSoundFX = false
 let pauseIntroMusic = true
+let pauseShowdownMusic = true
+
 const Q_DELAY = 2500
 let QTime = 0
 let QTimer = null
@@ -47,6 +51,7 @@ socket.on('connected', (data) => {
   pauseMusic = data.pauseMusic
   pauseSoundFX = data.pauseSoundFX
   pauseIntroMusic = data.pauseIntroMusic
+  pauseShowdownMusic = data.pauseShowdownMusic
 
   musicVol.value = data.musicVol *100
   musicVol.dataset.before = musicVol.value
@@ -82,6 +87,7 @@ pause.addEventListener('click', pauseTimer)
 music.addEventListener('click', toogleMusic)
 soundFX.addEventListener('click', toogleSoundFX)
 introMusic.addEventListener('click', toogleIntroMusic)
+showdownMusic.addEventListener('click', toogleShowdownMusic)
 reveal.addEventListener('click', revealAnswer)
 question.addEventListener('click', showQuestion)
 
@@ -120,6 +126,16 @@ function toogleIntroMusic() {
         introMusic.classList.add('is-paused')
     } else {
         introMusic.classList.remove('is-paused')
+    }
+}
+
+function toogleShowdownMusic() {
+    pauseShowdownMusic = !pauseShowdownMusic
+    socket.emit('pauseShowdownMusic', pauseShowdownMusic)
+    if (pauseShowdownMusic) {
+        showdownMusic.classList.add('is-paused')
+    } else {
+        showdownMusic.classList.remove('is-paused')
     }
 }
 
@@ -199,10 +215,12 @@ socket.on('score', (answer, data) => {
 
     choices.innerHTML = ''
     viewquestion.innerHTML = ''
+    note.innerHTML = ''
     if ( data.choices && data.choices.length ) {
         lock.disabled = false
         reveal.disabled = false
         viewquestion.innerHTML = data.question
+        note.innerHTML = data.note
         QTime = Math.ceil(data.question.split(" ").length/3)+2
         let html = '<ul class="view-answers host">';
         currentQuestionNumber.innerHTML = ~~data.currentQuestion+1

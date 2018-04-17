@@ -8,6 +8,7 @@ module.exports = [
         'December'
     ],
     answer: 'Christmas',
+    note: '',
     time: 10,
     lock: false
 }
@@ -21,6 +22,7 @@ module.exports = [
         'black'
     ],
     answer: 'blue',
+    note: '',
     time: 10,
     lock: false
 }
@@ -32,6 +34,7 @@ module.exports = [
         'incorrect'
     ],
     answer: 'correct',
+    note: '',
     time: 60,
     lock: true
 }
@@ -43,6 +46,7 @@ module.exports = [
         'incorrect'
     ],
     answer: 'correct',
+    note: '',
     time: 30,
     lock: true
 }
@@ -56,6 +60,7 @@ module.exports = [
         'onething cool'
     ],
     answer: 'nothing worth mentioning',
+    note: '',
     time: 10,
     lock: false
 }

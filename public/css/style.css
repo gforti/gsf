@@ -15,29 +15,11 @@ body {
 body,
 input,
 button {
-  font-size: 1.5vw;
+  font-size: 1vw;
 }
 
 p {
   margin: 2em 0;
-}
-
-ol {
-  font-size: 2.2vw;
-  text-align: left;  
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 0;
-  min-height: 52px;
-}
-
-li {
-  margin: 0.5em 0;
-}
-
-ol li:first-child {
-    color: yellow;
 }
 
 .hidden {
@@ -74,8 +56,7 @@ button {
   border: 0;
   border-radius: 3px;
   display: block;
-  margin: 1em 0;
-  padding: 0.8em 1em;  
+  padding: 0.6em 0em;  
   width: 100%;  
 }
 
@@ -175,10 +156,10 @@ textarea:required:valid
 .actions,
 .actions-host {
     display: grid;
-    grid-template-columns: repeat( 4, 1fr);
+    grid-template-columns: repeat( 5, 1fr);
     grid-row-gap:    1vw;
     grid-column-gap: 2vw;
-    font-size: 3vw;    
+    font-size: 1vw;    
 }
 
 .actions {
@@ -216,7 +197,7 @@ input[type="range"]::after
     color: lime;
     top: -5.5vh;
     position: relative;
-    font-size: 2vw;
+    font-size: 1vw;
     font-weight: bold;
     margin-right: -4vw;
 
@@ -227,7 +208,7 @@ input[type="range"]::before
     color: whitesmoke;
     top: -5.5vh;
     position: relative;
-    font-size: 2vw;
+    font-size: 1vw;
     font-weight: bold;
 
     margin-right: -6vw;
@@ -324,7 +305,7 @@ input[type="submit"][disabled]:hover
  ul.view-answers  {
     display: grid;
     font-size: 3vw;    
-    grid-row-gap:    0vw;
+    grid-row-gap:    1vw;
     grid-column-gap: 5vh;
     list-style-type: upper-alpha;
     padding: 0;
@@ -440,7 +421,9 @@ li.highlight span {
 
 
 .host-lock {
-    font-size: 2.5vw;
+    font-size: 1.5vw;
+    width: 50%;
+        margin: 0 auto;
 }
 
 .host-choices input[type=radio] + label {
@@ -488,6 +471,21 @@ li.highlight span {
 */
 .total-questions {
     margin: auto;
+}
+
+header.tech {
+    font-size: 1.5vw;
+}
+div.container.tech > h1 {
+    margin-top: 0;
+    font-size: 1.5vw;
+}
+div.container.tech > .actions,
+div.container.tech > .view-question,
+div.container.tech div.js-answers > div > p > big,
+div.container.tech > div.js-answers > div > ul > li > label,
+div.container.tech > div.js-answers > div > ul.view-answers {
+    font-size: 1.5vw;
 }
 
 
@@ -542,7 +540,7 @@ li.highlight span {
     ul.view-answers {
         display: grid;
         grid-template-columns: repeat( 2, 1fr);
-        grid-row-gap:    0vw;
+        grid-row-gap:    1vw;
         grid-column-gap: 5vh;
         list-style-type: upper-alpha;
         padding: 0;

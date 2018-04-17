@@ -30,12 +30,19 @@ let s_60sec = new Audio(`timer/60sec.mp3`)
 
 
 let introTrack = new Audio(`tracks/intro.mp3`)
+let showdownTrack = new Audio(`tracks/showdown.mp3`)
+let pauseShowdownMusic = true
 introTrack.volume = 0.1
 introTrack.addEventListener('ended',()=>{
     socket.emit('introTrackEnded')
 })
+showdownTrack.volume = 0.1
+showdownTrack.addEventListener('ended',()=>{
+    showdownTrack.currentTime = 0
+    showdownTrack.play()
+})
 let tracks = [];
-for (let i = 3; i <= 4; i++)
+for (let i = 3; i <= 3; i++)
 tracks.push(new Audio(`tracks/track${i}.mp3`))
 
 // tracks.sort(function() {return 0.5 - Math.random()})
@@ -63,6 +70,7 @@ socket.on('connected', (data) => {
     pauseTime = data.pauseTime
     pauseMusic = data.pauseMusic
     pauseSoundFX = data.pauseSoundFX
+    pauseShowdownMusic = data.pauseShowdownMusic
 
     setMusicVolume(data.musicVol)
     setTimerVolume(data.timerVol)
@@ -204,6 +212,11 @@ socket.on('introMusicToggle', (musicStop) => {
     } else {
         introTrack.play()
     }
+})
+
+socket.on('showdownMusicToggle', (musicStop) => {
+    pauseShowdownMusic = musicStop
+    playMusic()
 })
 
 socket.on('musicVolume', (musicVol) => {
@@ -399,10 +412,17 @@ setTimerVolume(0.1)
 
 function stopTrack() {
     tracks[currentTrack].pause()
+    showdownTrack.pause()
 }
 
 function playTrack() {
-    tracks[currentTrack].play()
+    if ( pauseShowdownMusic ) {
+        showdownTrack.pause()
+        tracks[currentTrack].play()
+    } else {
+        tracks[currentTrack].pause()
+        showdownTrack.play()
+    }
 }
 
 function playNextTrack() {
@@ -412,6 +432,7 @@ function playNextTrack() {
 
 function setMusicVolume(musicVol) {
     introTrack.volume = musicVol
+    showdownTrack.volume = musicVol
     tracks.forEach((track) => {
         track.volume = musicVol
     })

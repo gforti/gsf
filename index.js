@@ -13,6 +13,8 @@ const host_ip = require('./host-ip')
 var gameUrl = `http://${host_ip}:${port}`
 
 let questions = require('./questions')
+let testQuestions = require('./test')
+let currentTestQuestion = -1
 
 let data = {
   users: new Set(),
@@ -116,6 +118,18 @@ io.on('connection', (socket) => {
     clearBuzzers()
     data.currentQuestion = (data.currentQuestion + 1) % data.totalQuestions
     Object.assign(data, questions[data.currentQuestion])
+    if (data.choices.length > 2)
+        data.choices = shuffle(data.choices)
+    io.sockets.emit('question', Object.assign({}, getData()))
+  })
+
+  socket.on('showTestQuestion', () => {
+    data.pauseTime = false
+    data.questionReady =  false
+    clearBuzzers()
+    currentTestQuestion = (currentTestQuestion + 1) % testQuestions.length
+    // const rand = testQuestions[Math.floor(Math.random() * testQuestions.length)];
+    Object.assign(data, testQuestions[currentTestQuestion])
     if (data.choices.length > 2)
         data.choices = shuffle(data.choices)
     io.sockets.emit('question', Object.assign({}, getData()))

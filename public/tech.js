@@ -3,6 +3,7 @@ const active = document.querySelector('.js-active')
 const buzzList = document.querySelector('.buzz-in')
 const clear = document.querySelector('.js-clear')
 const question = document.querySelector('.js-question')
+const testQuestion = document.querySelector('.js-test-question')
 const pause = document.querySelector('.pause')
 const logo = document.querySelector('.js-logo')
 const music = document.querySelector('.js-music')
@@ -90,6 +91,7 @@ introMusic.addEventListener('click', toogleIntroMusic)
 showdownMusic.addEventListener('click', toogleShowdownMusic)
 reveal.addEventListener('click', revealAnswer)
 question.addEventListener('click', showQuestion)
+testQuestion.addEventListener('click', showTestQuestion)
 
 function revealAnswer(){
     socket.emit('lock', '')
@@ -168,6 +170,11 @@ function updateCurrQuestion() {
 
 function showQuestion() {
     socket.emit('showQuestion')
+    socket.emit('questionClose')
+}
+
+function showTestQuestion() {
+    socket.emit('showTestQuestion')
     socket.emit('questionClose')
 }
 

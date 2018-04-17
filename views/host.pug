@@ -3,7 +3,7 @@ extends layout
 block content
     header.host Host View
    
-    div.container      
+    div.container.host      
       div.actions-host
         button.js-clear.btn='Clear buzzes'
         button.js-question.btn='Show Question'
@@ -19,6 +19,7 @@ block content
               =`Team: ${buzzes[0]}`
         div.the-answer
       div.js-question.view-question Question
+      div.js-note.notes Notes
       div.js-answers                       
         div.js-choices.host-choices
         p

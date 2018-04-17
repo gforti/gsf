@@ -36,7 +36,7 @@ header {
 }
 
 header.host {
-     font-size: 2.5vw;
+     font-size: 1.5vw;
 }
 
 .logo { 
@@ -160,6 +160,11 @@ textarea:required:valid
     grid-row-gap:    1vw;
     grid-column-gap: 2vw;
     font-size: 1vw;    
+}
+
+.actions-host {
+    grid-template-columns: repeat( 4, 1fr);
+    font-size: 1.5vw;    
 }
 
 .actions {
@@ -486,6 +491,26 @@ div.container.tech div.js-answers > div > p > big,
 div.container.tech > div.js-answers > div > ul > li > label,
 div.container.tech > div.js-answers > div > ul.view-answers {
     font-size: 1.5vw;
+}
+
+
+
+div.container.host > .view-question,
+div.container.host div.js-answers > div > p > big,
+div.container.host > div.js-answers > div > ul > li > label,
+div.container.host > div.js-answers > div > ul.view-answers {
+    font-size: 2vw;
+}
+
+div.container.host > div.js-answers > div > ul.view-answers,
+div.container.host > div.js-answers > div > ul > li > label{
+    font-size: 1.5vw;
+}
+
+div.container.host > .notes {
+    font-size: 2vw;
+    margin: 1vw;
+    border: 1px #bbb dashed;
 }
 
 

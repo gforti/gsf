@@ -13,6 +13,7 @@ const lock = document.querySelector('.js-lock')
 const reveal = document.querySelector('.js-reveal')
 const viewquestion = document.querySelector('.view-question')
 const theAnswer = document.querySelector('.the-answer')
+const note = document.querySelector('.js-note')
 
 lock.addEventListener('click', lockChoice)
 reveal.addEventListener('click', revealAnswer)
@@ -99,10 +100,12 @@ function highlightAnswerShown(item) {
 
     choices.innerHTML = ''
     viewquestion.innerHTML = ''
+    note.innerHTML = ''
     if ( data.choices && data.choices.length ) {
         lock.disabled = false
         reveal.disabled = false
         viewquestion.innerHTML = data.question
+        note.innerHTML = data.note
         QTime = Math.ceil(data.question.split(" ").length/3)+2
         let html = '<ul class="view-answers host">';
         currentQuestionNumber.innerHTML = ~~data.currentQuestion+1

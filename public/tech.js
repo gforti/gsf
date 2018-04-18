@@ -203,10 +203,14 @@ function showScores() {
         return
     }
     scoreDiv.classList.remove('hidden')
+    updateScoreBoard()
+}
+
+
+function updateScoreBoard() {
     let teamInfo = {'unanswerd': 0}
     let html = ''
     Object.values(score).forEach( (data) => {
-        console.log(data)
 
         if (data.team.length && !teamInfo.hasOwnProperty(data.team)){
             teamInfo[data.team] = []
@@ -223,12 +227,10 @@ function showScores() {
         const incorrect = teamInfo[team].filter(data => !data.correct).length
         html += `<div><p>Team ${team}</p> <p>Correct: ${correct}</p><p>Incorrect: ${incorrect}</p></div>`
     })
-    console.log(teamInfo);
 
     const unanswerd = teamInfo['unanswerd']
     html += `<div><p>Unanswerd: ${unanswerd}</p></div>`
     scoreDivDisplay.innerHTML = html
-
 }
 
 
@@ -267,8 +269,8 @@ socket.on('unLockLogo', () => {
 socket.on('score', (answer, data) => {
     if ( !data.isTestQuestion ) {
         score[~~data.currentQuestion+1] = { answer:answer, correct: answer === data.answer, team: data.first }
-        console.log(score)
         localStorage.setItem('score', JSON.stringify(score))
+        updateScoreBoard()
     }
 })
 

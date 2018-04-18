@@ -65,7 +65,6 @@ socket.on('disableBuzzer', () => {
 
 
 function first(data) {
-    console.log(data)
     if ( user.team === data.first) {
         buzzer.classList.add('first')
         displayChoices(data)

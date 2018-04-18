@@ -8,6 +8,11 @@ const pause = document.querySelector('.pause')
 const logo = document.querySelector('.js-logo')
 const music = document.querySelector('.js-music')
 const reveal = document.querySelector('.js-reveal')
+const scoreBtn = document.querySelector('.js-score')
+const scoreDiv = document.querySelector('.js-show-scores')
+const scoreDivClose = document.querySelector('.js-score-close')
+const scoreDivClear = document.querySelector('.js-score-clear')
+const scoreDivDisplay = document.querySelector('.js-display-scores')
 const soundFX = document.querySelector('.js-fx')
 const introMusic = document.querySelector('.js-intro-music')
 const showdownMusic = document.querySelector('.js-showdown-music')
@@ -92,6 +97,19 @@ showdownMusic.addEventListener('click', toogleShowdownMusic)
 reveal.addEventListener('click', revealAnswer)
 question.addEventListener('click', showQuestion)
 testQuestion.addEventListener('click', showTestQuestion)
+scoreBtn.addEventListener('click', showScores)
+
+scoreDivClose.addEventListener('click', ()=>{
+    scoreDiv.classList.add('hidden')
+})
+scoreDivClear.addEventListener('click', ()=>{
+    let r = confirm('Are you sure?');
+    if (r) {
+        score = {}
+        localStorage.removeItem('score');
+        showScores()
+    }
+})
 
 function revealAnswer(){
     socket.emit('lock', '')
@@ -178,6 +196,41 @@ function showTestQuestion() {
     socket.emit('questionClose')
 }
 
+function showScores() {
+
+    if ( !scoreDiv.classList.contains('hidden') ) {
+        scoreDiv.classList.add('hidden')
+        return
+    }
+    scoreDiv.classList.remove('hidden')
+    let teamInfo = {'unanswerd': 0}
+    let html = ''
+    Object.values(score).forEach( (data) => {
+        console.log(data)
+
+        if (data.team.length && !teamInfo.hasOwnProperty(data.team)){
+            teamInfo[data.team] = []
+        }
+
+        if (teamInfo.hasOwnProperty(data.team))
+            teamInfo[data.team].push({correct:data.correct})
+        else
+            teamInfo['unanswerd']++
+    })
+
+    Object.keys(teamInfo).filter( key => key!== 'unanswerd').forEach( (team) => {
+        const correct = teamInfo[team].filter(data => data.correct).length
+        const incorrect = teamInfo[team].filter(data => !data.correct).length
+        html += `<div><p>Team ${team}</p> <p>Correct: ${correct}</p><p>Incorrect: ${incorrect}</p></div>`
+    })
+    console.log(teamInfo);
+
+    const unanswerd = teamInfo['unanswerd']
+    html += `<div><p>Unanswerd: ${unanswerd}</p></div>`
+    scoreDivDisplay.innerHTML = html
+
+}
+
 
 socket.on('enableBuzzer', () => {
    enableChoice()
@@ -212,10 +265,11 @@ socket.on('unLockLogo', () => {
 })
 
 socket.on('score', (answer, data) => {
-
-   score[~~data.currentQuestion+1] = { team:data.first, answer:answer, correct: answer === data.answer }
-   console.log(score)
-   localStorage.setItem('score', JSON.stringify(score))
+    if ( !data.isTestQuestion ) {
+        score[~~data.currentQuestion+1] = { answer:answer, correct: answer === data.answer, team: data.first }
+        console.log(score)
+        localStorage.setItem('score', JSON.stringify(score))
+    }
 })
 
  function displayChoices(data) {

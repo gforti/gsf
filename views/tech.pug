@@ -2,7 +2,7 @@ extends layout
 
 block content
     header.tech=gameUrl
-   
+    
     div.container.tech      
       div.actions  
         
@@ -31,6 +31,7 @@ block content
         button.pause.btn(class={'is-paused': pauseTime})='Pause Timer'
         button.js-question.btn='Show Question'
         button.js-reveal.btn='Reveal Answer'
+        button.js-score.btn='Score Board'
 
       div.js-view-question.view-question Question
       div.js-note.view-note Notes
@@ -39,6 +40,10 @@ block content
         p
           button.js-lock.host-lock Lock In
 
+    div.show-scores.js-show-scores.hidden
+        button.js-score-clear.btn.is-paused='Erase Scores'
+        button.js-score-close.btn='Close'        
+        div.js-display-scores.display-scores
 
     datalist(id="tickmarks")
         - for (var x = 0; x <= 100; x=x+5)

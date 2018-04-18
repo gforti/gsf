@@ -28,6 +28,7 @@ let data = {
   pauseIntroMusic: true,
   pauseShowdownMusic: true,
   questionReady: false,
+  isTestQuestion: false,
   musicVol: 0.1,
   timerVol: 0.1
 }
@@ -115,6 +116,7 @@ io.on('connection', (socket) => {
   socket.on('showQuestion', () => {
     data.pauseTime = false
     data.questionReady =  false
+    data.isTestQuestion =  false
     clearBuzzers()
     data.currentQuestion = (data.currentQuestion + 1) % data.totalQuestions
     Object.assign(data, questions[data.currentQuestion])
@@ -126,6 +128,7 @@ io.on('connection', (socket) => {
   socket.on('showTestQuestion', () => {
     data.pauseTime = false
     data.questionReady =  false
+    data.isTestQuestion =  true
     clearBuzzers()
     currentTestQuestion = (currentTestQuestion + 1) % testQuestions.length
     // const rand = testQuestions[Math.floor(Math.random() * testQuestions.length)];

@@ -513,7 +513,10 @@ div.container.host > .notes {
     border: 1px #bbb dashed;
 }
 
-
+.view-note {
+     border: 1px #bbb dashed;
+     margin: 1vw;
+}
 
 div.show-scores {
     position: absolute;

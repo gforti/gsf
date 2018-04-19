@@ -4,7 +4,7 @@ module.exports = [
     choices: [
         'Christmas',
         'New Years',
-        'Thanks Giving',
+        'Thanksgiving',
         'December'
     ],
     answer: 'Christmas',
@@ -34,7 +34,7 @@ module.exports = [
         'incorrect'
     ],
     answer: 'correct',
-    note: '',
+    note: 'A note would go here for the verse',
     time: 60,
     lock: true
 }
@@ -46,21 +46,21 @@ module.exports = [
         'incorrect'
     ],
     answer: 'correct',
-    note: '',
+    note: 'A note would go here for the verse 2',
     time: 30,
     lock: true
 }
 ,
 {
-    question: "This is going to be one of those very long questions about nothing.",
+    question: "According to the American Institute of Mathematics, what number comes after one",
     choices: [
-        'nothing worth mentioning',
-        'something that fits I think',
-        'anything this long',
-        'onething cool'
+        'One',
+        'Two',
+        'Three',
+        'Four'
     ],
-    answer: 'nothing worth mentioning',
-    note: '',
+    answer: 'Two',
+    note: 'Two and three are the only two consecutive prime numbers',
     time: 10,
     lock: false
 }

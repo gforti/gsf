@@ -149,10 +149,14 @@ body {
     
 }
 
+.view-answers ul.three {
+    grid-template-columns: repeat( 3, 1fr);   
+}
+
+
 .view-answers li {
     grid: column 1fr / auto;    
-    margin-left: 2vw;
-    margin-right: 2vw;   
+    margin-left: 2vw;  
     font-family: sans-serif;     
     text-transform: capitalize;   
     font-weight: bold;    

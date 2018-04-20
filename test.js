@@ -18,8 +18,7 @@ module.exports = [
     choices: [
         'blue',
         'red',
-        'green',
-        'black'
+        'green'
     ],
     answer: 'blue',
     note: '',

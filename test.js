@@ -16,11 +16,11 @@ module.exports = [
 {
     question: "What color is the sky",
     choices: [
-        'blue',
+        ' blue ',
         'red',
         'green'
     ],
-    answer: 'blue',
+    answer: 'BLUE',
     note: '',
     time: 10,
     lock: false

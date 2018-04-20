@@ -121,7 +121,7 @@ function highlightAnswerShown(item) {
                 </label></li>`
          })
          html += `</ul>`
-         theAnswer.innerHTML = `Answer: ${data.answer}`
+         theAnswer.innerHTML = `Answer: ${data.answer.trim()}`
          choices.innerHTML = html
          timer.innerHTML = QTime
          clearTimeout(QTimer)

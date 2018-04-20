@@ -155,7 +155,8 @@ body {
 
 
 .view-answers li {
-    grid: column 1fr / auto;    
+    display: flex;
+    align-items: center;    
     margin-left: 2vw;  
     font-family: sans-serif;     
     text-transform: capitalize;   

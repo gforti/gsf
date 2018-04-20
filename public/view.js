@@ -257,7 +257,8 @@ function displayChoices(data) {
 
         let html = `<ul class="${data.lock ? 'hidden' : ''} ${data.choices.length === 3 ? 'three' : ''}">`;
         data.choices.forEach( (answer, i) => {
-            html += `<li data-choice="${answer}" class="hidden"><span>${answer}</span></li>`
+            const addTime = !!(answer.split(" ").length > 4)
+            html += `<li data-choice="${answer.trim()}" data-time="${addTime}" class="hidden"><span>${answer.trim()}</span></li>`
         })
         html += '</ul>'
         answers.innerHTML = html
@@ -281,11 +282,16 @@ function startTimer() {
 
     let delay = Math.ceil(words.length/3) * 1000
     const DELAY_BY = 1500
+    const DELAY_BY_EXTRA = 1000
     const ul = answers.querySelector('ul')
+
 
     if (!ul.classList.contains('hidden')) {
         if (answers.querySelector('li:nth-child(1)')) {
             delay += DELAY_BY
+            if ( answers.querySelector('li:nth-child(1)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
             answer1Timer = setTimeout(()=>{
                 socket.emit('answerShown', 1)
                 const li = answers.querySelector('li:nth-child(1)')
@@ -294,6 +300,9 @@ function startTimer() {
         }
         if (answers.querySelector('li:nth-child(2)')) {
             delay += DELAY_BY
+            if ( answers.querySelector('li:nth-child(2)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
             answer2Timer = setTimeout(()=>{
                 socket.emit('answerShown', 2)
                 const li = answers.querySelector('li:nth-child(2)')
@@ -302,6 +311,9 @@ function startTimer() {
         }
         if (answers.querySelector('li:nth-child(3)')) {
             delay += DELAY_BY
+            if ( answers.querySelector('li:nth-child(3)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
             answer3Timer = setTimeout(()=>{
                 socket.emit('answerShown', 3)
                 const li = answers.querySelector('li:nth-child(3)')
@@ -310,6 +322,9 @@ function startTimer() {
         }
         if (answers.querySelector('li:nth-child(4)')) {
             delay += DELAY_BY
+            if ( answers.querySelector('li:nth-child(4)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
             answer4Timer = setTimeout(()=>{
                 socket.emit('answerShown', 4)
                 const li = answers.querySelector('li:nth-child(4)')
@@ -356,12 +371,12 @@ function showCorrectAnswer() {
 
     const choices = document.querySelectorAll('li[data-choice]')
     choices.forEach( (input) => {
-        if ( input.dataset.choice === correctAnswer) {
+        if ( input.dataset.choice.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
             input.classList.add('correct')
         }
     })
 
-    if ( correctAnswer.length &&  chosenAnswer !== null && chosenAnswer === correctAnswer) {
+    if ( correctAnswer.length &&  chosenAnswer !== null && chosenAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
         info.innerHTML = `Correct`
         info.classList.add('correct')
         if(!pauseSoundFX) s_correct.play()

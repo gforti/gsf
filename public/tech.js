@@ -268,7 +268,7 @@ socket.on('unLockLogo', () => {
 
 socket.on('score', (answer, data) => {
     if ( !data.isTestQuestion ) {
-        score[~~data.currentQuestion+1] = { answer:answer, correct: answer === data.answer, team: data.first }
+        score[~~data.currentQuestion+1] = { answer:answer, correct: answer.trim().toLowerCase() === data.answer.trim().toLowerCase(), team: data.first }
         localStorage.setItem('score', JSON.stringify(score))
         updateScoreBoard()
     }

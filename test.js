@@ -39,18 +39,6 @@ module.exports = [
 }
 ,
 {
-    question: "Recite memory qoute 2",
-    choices: [
-        'correct',
-        'incorrect'
-    ],
-    answer: 'correct',
-    note: 'A note would go here for the verse 2',
-    time: 30,
-    lock: true
-}
-,
-{
     question: "According to the American Institute of Mathematics, what number comes after one",
     choices: [
         'One',

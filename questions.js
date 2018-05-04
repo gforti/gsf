@@ -424,6 +424,214 @@ module.exports = [
     time: 60,
     lock: true
 }
+,
+{
+    question: "De acuerdo con Juan, capítulo 1, ¿Cómo contestó Juan el bautista a los sacerdotes y levitas quienes les preguntaron si era el Cristo?",
+    choices: [
+        "Yo no soy el Cristo",
+        "Yo soy quien soy",
+        "Yo solo bautizo"
+    ],
+    answer: "Yo no soy el Cristo",
+    note: "Verso 19",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 1, ¿Qué nombre le puso Jesús a Simón, que también significa Pedro)?",
+    choices: [
+        "Eustakio",
+        "Cefas",
+        "Guacanagarix"
+    ],
+    answer: "Cefas",
+    note: "Verso 42",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 1, ¿Qué le dijo Jesús a Felipe cuando se lo encontró en Galilea?",
+    choices: [
+        "Mi hermano",
+        "Ke lo ke?",
+        "Sígueme"
+    ],
+    answer: "Sígueme",
+    note: "Verso 43",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 1, ¿Qué pregunta le hizo Natanael a Jesús cuando Jesús le dijo “Aquí tienen a un verdadero israelita, en quien no hay falsedad”?",
+    choices: [
+        "¿De dónde me conoces?",
+        "¿Donde venden chimis?",
+        "¿Eres tu Cristiano?"
+    ],
+    answer: "¿De dónde me conoces?",
+    note: "Verso 48",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 2, ¿En cuantos días Jesús destruiría y levantaría el templo?",
+    choices: [
+        "En 7 dias",
+        "En 3 dias",
+        "En 3 años"
+    ],
+    answer: "En 3 dias",
+    note: "verso 19",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 2, ¿Cuánto tiempo se tomó construir el templo?",
+    choices: [
+        "1 dia",
+        "3000 años",
+        "46 años"
+    ],
+    answer: "46 años",
+    note: "verso 20",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 2, ¿Cuantas tinajas de agua convirtió Jesús en vino?",
+    choices: [
+        "6",
+        "Un monton",
+        "200"
+    ],
+    answer: "6",
+    note: "verso 6",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 3, ¿A hora del día visitó Nicodemo a Jesús?",
+    choices: [
+        "A las 15 de la mañana",
+        "De Noche",
+        "A la hora del lonche"
+    ],
+    answer: "De Noche",
+    note: "verso 2",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 3, ¿Qué título académico uso Nicodemo para referirse a Jesús?",
+    choices: [
+        "Profe",
+        "Sumo sacerdote",
+        "Rabí"
+    ],
+    answer: "Rabí",
+    note: "verso 2",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "Termine la siguiente frase: Como levantó Moisés la serpiente en el desierto, así también tiene que ser levantado el_________________.",
+    choices: [
+        "Hijo del hombre",
+        "Capitan",
+        "Hijo de doña Tatica"
+    ],
+    answer: "Hijo del hombre",
+    note: "Juan 3: verso 14",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo a Juan el Bautista, ¿A quien le toca crecer, y a el menguar?",
+    choices: [
+        "A Pedro",
+        "A Jesus",
+        "A Jacinto"
+    ],
+    answer: "A Jesus",
+    note: "Juan 3, verso 30",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan, capítulo 4, ¿A cuál de sus hijos dio Jacob el terreno cerca de la ciudad samaritana llamada Sicar?",
+    choices: [
+        "A Eustaquio",
+        "A Simon Bolivar",
+        "A Jose"
+    ],
+    answer: "A Jose",
+    note: "verso 4",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan,  capítulo 4, ¿Cómo le respondió la mujer samaritana a Jesús cuando él le pidió que trajera a su marido?",
+    choices: [
+        "No tengo esposo",
+        "A cuál de los cinco",
+        "A quien?"
+    ],
+    answer: "No tengo esposo",
+    note: "verso 17",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan,  capítulo 4, ¿Por que muchos samaritanos creyeron en Jesús?",
+    choices: [
+        "Por el testimonio de la Mujer",
+        "Porque les dio de comer",
+        "Porque prometió prosperidad"
+    ],
+    answer: "Por el testimonio de la Mujer",
+    note: "verso 39",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan,  capítulo 4, ¿Cuantos dias se quedo Jesus con los samaritanos?",
+    choices: [
+        "Un mes",
+        "2 dias",
+        "15 dias"
+    ],
+    answer: "2 dias",
+    note: "verso 40",
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "De acuerdo con Juan,  capítulo 4, ¿A qué hora quedó sanado el hijo del funcionario?",
+    choices: [
+        "A la una de la tarde, se le quitó la fiebre",
+        "A las 3 de la madrugada",
+        "A las 12:00 PM."
+    ],
+    answer: "A la una de la tarde, se le quitó la fiebre",
+    note: "verso 52",
+    time: 10,
+    lock: false
+}
 
 ];
 

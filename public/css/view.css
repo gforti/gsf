@@ -111,12 +111,17 @@ body {
 }
 
 .question-swoop {
-    animation: entry 2s ease;
+    animation: entry 2s ease;   
 }
 
-@keyframes entry {
-  from {clip-path: inset(0vh 200vw 0vw 0vw);}
-  to {clip-path: inset(0vh 0vw 0vw 0vw);}
+@keyframes entry {    
+   0% {
+    clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 1%);
+  }  
+  
+  100% {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+  }
 }
 
 .timer {

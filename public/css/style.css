@@ -570,7 +570,7 @@ div.show-scores button.btn {
 }
 
 @media screen 
-  and (max-device-width: 600px) {
+  and (max-device-width: 800px) {
   
     body,
     input,
@@ -585,7 +585,7 @@ div.show-scores button.btn {
           
     
     .js-lock {
-        font-size: 6.5vw;
+        font-size: 2vw;
     }
 
     ul.view-answers,
@@ -603,13 +603,23 @@ div.show-scores button.btn {
     }
     
     .btn {
-        font-size: 3.5vw;
+        font-size: 2vw;
     }
     
     ul.view-answers.host,
     li.view-answers.host {
         font-size: 6vw;
-        grid-template-columns: repeat( 2, 1fr);
+        
+    }
+    p {
+        margin: 1em 0;
+    }
+    
+    body > div.container.host > div.view-question,
+    body > div.container.host > div.notes,
+    body > div.container.host > div.js-answers > div > ul > li > label
+    {
+        //font-size: 1rem !important;
     }
       
 }

@@ -257,7 +257,7 @@ function displayChoices(data) {
 
         let html = `<ul class="${data.lock ? 'hidden' : ''} ${data.choices.length === 3 ? 'three' : ''}">`;
         data.choices.forEach( (answer, i) => {
-            const addTime = !!(answer.split(" ").length > 4)
+            const addTime = !!(answer.split(" ").length > 3)
             html += `<li data-choice="${answer.trim()}" data-time="${addTime}" class="hidden"><span>${answer.trim()}</span></li>`
         })
         html += '</ul>'
@@ -289,47 +289,47 @@ function startTimer() {
     if (!ul.classList.contains('hidden')) {
         if (answers.querySelector('li:nth-child(1)')) {
             delay += DELAY_BY
-            if ( answers.querySelector('li:nth-child(1)').dataset.time == "true") {
-                delay += DELAY_BY_EXTRA
-            }
             answer1Timer = setTimeout(()=>{
                 socket.emit('answerShown', 1)
                 const li = answers.querySelector('li:nth-child(1)')
                 if (li) li.classList.remove('hidden')
             }, delay)
+            if ( answers.querySelector('li:nth-child(1)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
         }
         if (answers.querySelector('li:nth-child(2)')) {
             delay += DELAY_BY
-            if ( answers.querySelector('li:nth-child(2)').dataset.time == "true") {
-                delay += DELAY_BY_EXTRA
-            }
             answer2Timer = setTimeout(()=>{
                 socket.emit('answerShown', 2)
                 const li = answers.querySelector('li:nth-child(2)')
                 if (li) li.classList.remove('hidden')
             }, delay)
+            if ( answers.querySelector('li:nth-child(2)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
         }
         if (answers.querySelector('li:nth-child(3)')) {
             delay += DELAY_BY
-            if ( answers.querySelector('li:nth-child(3)').dataset.time == "true") {
-                delay += DELAY_BY_EXTRA
-            }
             answer3Timer = setTimeout(()=>{
                 socket.emit('answerShown', 3)
                 const li = answers.querySelector('li:nth-child(3)')
                 if (li) li.classList.remove('hidden')
             }, delay)
+            if ( answers.querySelector('li:nth-child(3)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
         }
         if (answers.querySelector('li:nth-child(4)')) {
             delay += DELAY_BY
-            if ( answers.querySelector('li:nth-child(4)').dataset.time == "true") {
-                delay += DELAY_BY_EXTRA
-            }
             answer4Timer = setTimeout(()=>{
                 socket.emit('answerShown', 4)
                 const li = answers.querySelector('li:nth-child(4)')
                 if (li) li.classList.remove('hidden')
             }, delay)
+            if ( answers.querySelector('li:nth-child(4)').dataset.time == "true") {
+                delay += DELAY_BY_EXTRA
+            }
         }
     }
 

@@ -619,7 +619,7 @@ div.show-scores button.btn {
     body > div.container.host > div.notes,
     body > div.container.host > div.js-answers > div > ul > li > label
     {
-        //font-size: 1rem !important;
+        /* font-size: 1rem !important; */
     }
       
 }

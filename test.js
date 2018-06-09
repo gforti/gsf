@@ -1,53 +1,39 @@
 module.exports = [
 {
-    question: "Choose the answer Christmas",
+    question: "De acuerdo al capítulo 1: ¿Qué existía en el principio?",
     choices: [
-        'Christmas',
-        'New Years',
-        'Thanksgiving',
-        'December'
+        "El Verbo",
+        "El Cielo",
+        "La Tiera"
     ],
-    answer: 'Christmas',
-    note: '',
+    answer: "El Verbo",
+    note: '1:1',
     time: 10,
     lock: false
 }
 ,
 {
-    question: "What color is the sky",
+    question: "Termine la siguiente frase: Como levantó Moisés la serpiente en el desierto, así también tiene que ser levantado el_________________.",
     choices: [
-        ' blue ',
-        'red',
-        'green'
+        "Hijo del hombre",
+        "Capitan",
+        "Hijo de doña Tatica"
     ],
-    answer: 'BLUE',
-    note: '',
+    answer: "Hijo del hombre",
+    note: "Juan 3: verso 14",
     time: 10,
     lock: false
 }
 ,
 {
-    question: "Recite memory qoute",
+    question: "De acuerdo con Juan, capítulo 2, ¿Cuantas tinajas de agua convirtió Jesús en vino?",
     choices: [
-        'correct',
-        'incorrect'
+        "6",
+        "Un monton",
+        "200"
     ],
-    answer: 'correct',
-    note: 'A note would go here for the verse',
-    time: 60,
-    lock: true
-}
-,
-{
-    question: "According to the American Institute of Mathematics, what number comes after one",
-    choices: [
-        'One',
-        'Two',
-        'Three',
-        'Four'
-    ],
-    answer: 'Two',
-    note: 'Two and three are the only two consecutive prime numbers',
+    answer: "6",
+    note: "verso 6",
     time: 10,
     lock: false
 }

@@ -127,6 +127,134 @@ module.exports = [
     time: 10,
     lock: false
 }
+,
+{
+    question: "¿Qué dice el Salmo 14:1?",
+    choices: [
+        'correct',
+        'incorrect'
+    ],
+    answer: 'correct',
+    note: ' Dice el necio en su corazón, no hay Dios.',
+    time: 60,
+    lock: true
+}
+,
+{
+    question: "¿Una de las ideas que la ciencia debe aceptar acerca del mundo es que el mundo tiene?",
+    choices: [
+        "Orden",
+        "Tiempo",
+        "Tamaño"
+    ],
+    answer: "Orden",
+    note: '',
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "Para muchos científicos antiguos, su razón principal para estudiar el mundo era su creencia en _______. ",
+    choices: [
+        "Dios",
+        "El más allá",
+        "El ateísmo"
+    ],
+    answer: "Dios",
+    note: '',
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "¿Según el capítulo 5, el comienzo de que, es uno de los problemas que la ciencia no puede explicar, pero que apuntan con firmeza hacia Dios?",
+    choices: [
+        "La Vida",
+        "La muerte",
+        "La vejez"
+    ],
+    answer: "La Vida",
+    note: '',
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "Una evidencia que respalda la existencia de Dios es, que el universo parece haber sido diseñado para el _______.",
+    choices: [
+        "Hombre",
+        "Animal",
+        "Sol"
+    ],
+    answer: "Hombre",
+    note: '',
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "¿Que puso Dios en el hombre para ayudarlo a entender el bien y el mal?",
+    choices: [
+        "La conciencia",
+        "El alma",
+        "El corazón"
+    ],
+    answer: "La conciencia",
+    note: '',
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "¿Qué dice el Salmo 19:1?",
+    choices: [
+        'correct',
+        'incorrect'
+    ],
+    answer: 'correct',
+    note: 'Los cielos cuentan la gloria de Dios; el firmamento anuncia la obra de sus manos.',
+    time: 60,
+    lock: true
+}
+,
+{
+    question: "¿Cuantas personas murieron en el siglo XX a mano de las naciones ateas de Rusia comunista, China comunista y Alemania nazi?",
+    choices: [
+        "100 millones",
+        "1 millón",
+        "10 millones"
+    ],
+    answer: "100 millones",
+    note: '',
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "¿Qué método de investigación dice el autor que demuestra mucha evidencia de que Jesús es el Hijo de Dios?",
+    choices: [
+        "Histórico-legal",
+        "Científico",
+        "Analítico"
+    ],
+    answer: "Histórico-legal",
+    note: '',
+    time: 10,
+    lock: false
+}
+,
+{
+    question: "Al final del capítulo 5, el autor dice que el problema que algunos cristianos tienen es que la verdad de Cristo no ha llegado a su ________. ",
+    choices: [
+        "Mente",
+        "Corazón",
+        "Alma"
+    ],
+    answer: "Mente",
+    note: '',
+    time: 10,
+    lock: false
+}
 
 
 ];
